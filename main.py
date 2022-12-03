@@ -1,6 +1,12 @@
-import Controller
+#!/usr/bin/python3
+from controller.controller_base import ControllerBase
 
-c = Controller.ControllerBase()
+from model.model_password import ModelPassword
+from model.model_credentials import ModelCredentials
+
+from view import View
+
+c = ControllerBase(View, ModelCredentials, ModelPassword)
 c.view.password_entry()  # demande du mot de passe
 first_time_connected = c.first_time()
 
