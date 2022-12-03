@@ -1,24 +1,17 @@
-from  hashlib import sha512
-import string
+from hashlib import sha512
 
-from  View import View
-from  Models import ModelPassword, ModelCredentials
-
-STRINGS = string.ascii_lowercase + string.ascii_uppercase + \
-    string.ascii_letters + string.digits + string.punctuation
-
-class ControllerBase: 
-    def __init__(self):
-        self.view = View()
-        self.__model_credentials = ModelCredentials('user.db')
-        self.__models_secret = ModelPassword('secret.db')
+class ControllerBase:
+    def __init__(self, view, model_credentials, model_password):
+        self.view = view()
+        self.__model_credentials = model_credentials('user.db')
+        self.__models_secret = model_password('secret.db')
         self.__password_db = self.__models_secret.get_password()
         self.__loop_cmd = False
         self.credentials = {
-                'service': None,
-                'user': None ,
-                'password': None
-            }
+            'service': None,
+            'user': None,
+            'password': None
+        }
 
     def first_time(self):
         """Checks if the password has already been created 
@@ -65,17 +58,16 @@ class ControllerBase:
         data = self.__model_credentials.get_credentials()
         self.view.show_all_info(data)
 
-
-    def set_command(self): 
+    def set_command(self):
         """Interaction with user inputs
         """
-        self.__loop_cmd = True 
-        while self.__loop_cmd: 
+        self.__loop_cmd = True
+        while self.__loop_cmd:
             cmd = input('>> ').strip()
 
-            if "set" in cmd:  
+            if "set" in cmd:
                 cmd = cmd.split(' ')
-                if len(cmd) ==   4: 
+                if len(cmd) == 4:
                     self.credentials['service'] = cmd[1]
                     self.credentials['user'] = cmd[2]
                     self.credentials['password'] = cmd[3]
@@ -83,14 +75,14 @@ class ControllerBase:
                     self.__model_credentials.set_credentials(self.credentials)
                     print("Les donnée sont inserer")
 
-                else: 
+                else:
                     print(self.view.help)
 
             elif cmd == 'show':
                 self.show()
 
-            elif cmd in ['exit', 'q', 'quit']: 
-                self.__loop_cmd = False 
-            
-            else: 
+            elif cmd in ['exit', 'q', 'quit']:
+                self.__loop_cmd = False
+
+            else:
                 print(self.view.help)
