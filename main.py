@@ -4,7 +4,7 @@ from controller.controller_base import ControllerBase
 from model.model_password import ModelPassword
 from model.model_credentials import ModelCredentials
 
-from view import View
+from view.view_base import View
 
 c = ControllerBase(View, ModelCredentials, ModelPassword)
 c.view.password_entry()  # demande du mot de passe
