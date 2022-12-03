@@ -1,4 +1,4 @@
-from model_base import ModelMain
+from .model_base import ModelMain
 
 class ModelCredentials(ModelMain):
     """child class which will concern the operations of the user table

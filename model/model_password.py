@@ -1,4 +1,4 @@
-from model_base import ModelMain
+from .model_base import ModelMain
 
 class ModelPassword(ModelMain):
     def __init__(self, database: str, table: str = 'passwd'):
