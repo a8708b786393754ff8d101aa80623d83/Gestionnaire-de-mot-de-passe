@@ -26,4 +26,3 @@ class View:
             print(f"Email/nom d'utilisateur: {element[1]}")
             print(f'Mot de passe: {element[2]}')
         print('--------------')
-        

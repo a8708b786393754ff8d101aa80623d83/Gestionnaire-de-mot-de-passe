@@ -1,11 +1,13 @@
 from .model_base import ModelMain
 
+
 class ModelCredentials(ModelMain):
     """child class which will concern the operations of the user table
 
     Args:
         ModelMain (_type_): parent class 
     """
+
     def __init__(self, database: str, table: str = 'credentials'):
         super().__init__(database=database, table=table)
         self.init_db()

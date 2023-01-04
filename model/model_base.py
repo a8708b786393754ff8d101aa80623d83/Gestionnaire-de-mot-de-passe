@@ -1,8 +1,8 @@
 import sqlite3
 
+
 class ModelMain:
 
-    
     def __init__(self, database: str, table: str):
         """Constructive method, it creates a database in the data folder.
 
@@ -34,8 +34,6 @@ class ModelMain:
         """
             Query create database here
         """
-    
+
     def __del__(self):
         self.conn.close()
-
-

@@ -1,5 +1,6 @@
 from hashlib import sha512
 
+
 class ControllerBase:
     def __init__(self, view, model_credentials, model_password):
         self.view = view()
