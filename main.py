@@ -8,6 +8,7 @@ from model.model_password import ModelPassword
 from model.model_credentials import ModelCredentials
 
 from view.view_base import View
+from view.view_credentials import ViewCredentials
 
 
 def command_prompt():
@@ -23,7 +24,8 @@ def command_prompt():
                 controller_credentials.credentials['password'] = cmd_split[3]
 
                 controller_credentials.set_credentials()
-                print('Les données sont insérer')  # TODO ajoutée une vue
+                controller_credentials.view.insert()
+                
             else:
                 controller_base.view.help()
         elif cmd == 'show':
@@ -37,7 +39,7 @@ def command_prompt():
 
 
 controller_base = ControllerBase(View)
-controller_credentials = ControllerCredentials(View, ModelCredentials)
+controller_credentials = ControllerCredentials(ViewCredentials, ModelCredentials)
 controller_password = ControllerPassword(View, ModelPassword)
 
 controller_password.view.password_entry()  # demande du mot de passe
