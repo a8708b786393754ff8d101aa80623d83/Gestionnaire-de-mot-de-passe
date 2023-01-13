@@ -1,5 +1,6 @@
 from .model_base import ModelMain
 
+
 class ModelPassword(ModelMain):
     def __init__(self, database: str, table: str = 'passwd'):
         super().__init__(database, table)
