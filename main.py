@@ -40,7 +40,7 @@ def command_prompt():
 
 controller_base = ControllerBase(View)
 controller_credentials = ControllerCredentials(ViewCredentials, ModelCredentials)
-controller_password = ControllerPassword(View, ModelPassword)
+controller_password = ControllerPassword(ViewCredentials, ModelPassword)
 
 controller_password.view.password_entry()  # demande du mot de passe
 first_time_connected = controller_password.first_time()
